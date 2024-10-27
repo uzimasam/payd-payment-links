@@ -10,6 +10,13 @@ import {
   useTranslate,
   Button,
   Link,
+  TextField,
+  PhoneField,
+  Form,
+  Grid,
+  View,
+  GridItem,
+  BlockSpacer,
 } from "@shopify/ui-extensions-react/checkout";
 import { useState } from "react";
 
@@ -49,9 +56,33 @@ function Extension() {
         {"I would like a custom payment link"}
       </Checkbox>
       {showUrl && (
-        <Link to="https://link.payd.one" external>
-          {"link.payd.one"}
-        </Link>
+        <Form
+        onSubmit={() =>
+          console.log('onSubmit event')
+        }
+      >
+        <Grid
+          columns={['1fr', '1fr']}
+          spacing="base"
+        >
+          <View>
+            <TextField label="First name" required />
+          </View>
+          <View>
+            <TextField label="Last name" required />
+          </View>
+          <GridItem columnSpan={2}>
+            <PhoneField label="Phone number" required />
+          </GridItem>
+          <GridItem columnSpan={2}>
+            <TextField label="Email" type="email" required />
+          </GridItem>
+        </Grid>
+        <BlockSpacer spacing="base" />
+        <Button accessibilityRole="submit">
+          Generate Payment Link
+        </Button>
+      </Form>
       )}
     </BlockStack>
   );
