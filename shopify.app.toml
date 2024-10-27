@@ -18,3 +18,6 @@ api_version = "2024-10"
 
 [pos]
 embedded = false
+
+[build]
+dev_store_url = "uzimasam.myshopify.com"
