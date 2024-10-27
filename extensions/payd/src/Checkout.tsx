@@ -17,8 +17,9 @@ import {
   View,
   GridItem,
   BlockSpacer,
+  useTotalAmount,
 } from "@shopify/ui-extensions-react/checkout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // 1. Choose an extension target
 export default reactExtension("purchase.checkout.block.render", () => (
@@ -28,6 +29,8 @@ export default reactExtension("purchase.checkout.block.render", () => (
 function Extension() {
   const translate = useTranslate();
   const { extension } = useApi();
+  const currencyCode = useTotalAmount().currencyCode;
+  const totalAmount = useTotalAmount().amount;
   const instructions = useInstructions();
   const applyAttributeChange = useApplyAttributeChange();
   const [showUrl, setShowUrl] = useState(false);
@@ -77,10 +80,16 @@ function Extension() {
           <GridItem columnSpan={2}>
             <TextField label="Email" type="email" required />
           </GridItem>
+          <View>
+            <TextField label="currency" required value={currencyCode} disabled />
+          </View>
+          <View>
+            <TextField label="Amount" value={totalAmount.toString()} disabled />
+          </View>
         </Grid>
         <BlockSpacer spacing="base" />
         <Button accessibilityRole="submit">
-          Generate Payment Link
+          Generate Payment Link for {currencyCode} {totalAmount}
         </Button>
       </Form>
       )}

@@ -8,7 +8,7 @@ embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = ""
+scopes = "customer_read_customers"
 
 [auth]
 redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
@@ -21,3 +21,4 @@ embedded = false
 
 [build]
 dev_store_url = "uzimasam.myshopify.com"
+include_config_on_deploy = true
