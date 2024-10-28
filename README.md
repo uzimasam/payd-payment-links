@@ -1,78 +1,67 @@
-# Shopify App Template - Extension only
+## Project: Shopify CustomPayd App
 
-This is a template for building an [extension-only Shopify app](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app). It contains the basics for building a Shopify app that uses only app extensions.
+### Overview
 
-This template doesn't include a server or the ability to embed a page in the Shopify Admin. If you want either of these capabilities, choose the [Remix app template](https://github.com/Shopify/shopify-app-template-remix) instead.
+This project is a custom Shopify app with an admin interface and client-side checkout extension using Shopify’s App Bridge, Admin API, and UI Extensions. The app serves as a **custom payment solution** that enables store owners to generate personalized payment links via Payd Restful APIs, making it easier for clients to transact directly on the Shopify platform. By integrating both an admin interface and a client-facing checkout extension, the app showcases how to seamlessly bridge functionality between the store admin and the end customer.
 
-Whether you choose to use this template or another one, you can use your preferred package manager and the Shopify CLI with [these steps](#installing-the-template).
+### Key Features
 
-## Benefits
+1. **Admin Interface for API Credentials Setup**  
+   The app includes an admin dashboard where store owners can configure API credentials required for payment processing. This setup is only accessible to administrators and securely stores credentials in the app’s backend, ensuring that sensitive information remains protected.
 
-Shopify apps are built on a variety of Shopify tools to create a great merchant experience. The [create an app](https://shopify.dev/docs/apps/getting-started/create) tutorial in our developer documentation will guide you through creating a Shopify app.
+2. **Callback Viewing**  
+   Admins can access a history of generated links along with their associated callbacks. This functionality provides a convenient way for admins to track payments and confirm payment status without leaving the Shopify admin.
 
-This app template does little more than install the CLI and scaffold a repository.
+3. **Client-Facing Checkout Extension**  
+   The app includes a custom checkout extension that customers can use to generate their own payment link directly at checkout. This link is configured with customer details and specific order information, allowing for a personalized and secure payment experience.
 
-## Getting started
+### Technical Details
 
-### Requirements
+- **Frontend**  
+  - Remix Framework: Used for server-side rendering and routing, ensuring a responsive, scalable interface.
+  - Shopify Polaris and App Bridge: Provides a seamless Shopify admin experience, with intuitive UI components and deep Shopify store integration.
+  - Checkout UI Extensions: Enables custom interactions on the client’s checkout page, allowing customers to generate payment links at checkout.
+  - Provides a dynamic form at checkout that retrieves order details, allowing customers to generate a unique payment link.
 
-1. You must [download and install Node.js](https://nodejs.org/en/download/) if you don't already have it.
-1. You must [create a Shopify partner account](https://partners.shopify.com/signup) if you don’t have one.
-1. You must create a store for testing if you don't have one, either a [development store](https://help.shopify.com/en/partners/dashboard/development-stores#create-a-development-store) or a [Shopify Plus sandbox store](https://help.shopify.com/en/partners/dashboard/managing-stores/plus-sandbox-store).
+- **Backend**  
+  - Prisma ORM: Used to securely store and manage API credentials, link generation data, and callback information in a database.
+  - GraphQL and REST APIs: Enables flexibility in data retrieval for both complex queries and simpler, RESTful actions.
+  - API Security: All API requests are secured through Shopify App Bridge authentication, ensuring that only authorized users can access sensitive operations.
+  - Handles callback tracking and displays the links created for admin review.
 
-### Installing the template
+### Usage Instructions
 
-This template can be installed using your preferred package manager:
+1. **Admin Setup**  
+   Upon installing the app, the admin will be prompted to set up API credentials required for payment processing. Admins can:
+   - Enter their API username, password, and wallet details.
+   - Generate CustomPayd payment links and view generated links with associated callbacks.
 
-Using yarn:
+2. **Customer Experience**  
+   - At checkout, the app provides customers with a button to generate a payment link.
+   - Customers can follow the generated link to complete the transaction, with the callback providing payment confirmation.
 
-```shell
-yarn create @shopify/app
-```
+### Technologies Used
 
-Using npm:
+- **Shopify API and App Bridge** for integration with Shopify stores.
+- **Shopify UI Extensions** to build a custom, embedded client experience in the Shopify checkout.
+- **Node.js & Express** for server-side credential storage and API handling.
+- **React** for building a dynamic admin interface and extension component.
 
-```shell
-npm init @shopify/app@latest
-```
+### Setup and Installation
 
-Using pnpm:
+1. Clone this repository.
+2. Install the dependencies with `npm install`.
+3. Start the backend server with `npm start`.
+4. Configure your Shopify app settings in the Shopify Partner Dashboard, setting up the URL to direct to this app.
+5. Install the app on a test Shopify store, where you can access the admin interface and the client extension.
 
-```shell
-pnpm create @shopify/app@latest
-```
+### Security Notes
 
-This will clone the template and install the required dependencies.
+This app ensures that API credentials are stored securely on the server and are not exposed to the client side. Only authorized admins can view and update these credentials.
 
-#### Local Development
+### Future Improvements
 
-[The Shopify CLI](https://shopify.dev/docs/apps/tools/cli) connects to an app in your Partners dashboard. It provides environment variables and runs commands in parallel.
+- **Customizable Payment Links**: Allow admins to set custom payment conditions or templates for payment link generation.
+- **Extended Callback Functionality**: Improve the callback system for more detailed reporting.
 
-You can develop locally using your preferred package manager. Run one of the following commands from the root of your app.
-
-Using yarn:
-
-```shell
-yarn dev
-```
-
-Using npm:
-
-```shell
-npm run dev
-```
-
-Using pnpm:
-
-```shell
-pnpm run dev
-```
-
-Open the URL generated in your console. Once you grant permission to the app, you can start development (such as generating extensions).
-
-## Developer resources
-
-- [Introduction to Shopify apps](https://shopify.dev/docs/apps/getting-started)
-- [App extensions](https://shopify.dev/docs/apps/build/app-extensions)
-- [Extension only apps](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app)
-- [Shopify CLI](https://shopify.dev/docs/apps/tools/cli)
+---
