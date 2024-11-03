@@ -3,22 +3,30 @@
 client_id = "b3f57a277c38419fdb359413ff1717be"
 name = "payd-payment-links"
 handle = "payd-payment-links"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://thou-rm-runs-cities.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "customer_read_customers"
+scopes = ""
 
 [auth]
-redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+redirect_urls = [
+  "https://thou-rm-runs-cities.trycloudflare.com/auth/callback",
+  "https://thou-rm-runs-cities.trycloudflare.com/auth/shopify/callback",
+  "https://thou-rm-runs-cities.trycloudflare.com/api/auth/callback"
+]
 
 [webhooks]
 api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
 
 [pos]
 embedded = false
 
 [build]
 dev_store_url = "uzimasam.myshopify.com"
-include_config_on_deploy = true
+automatically_update_urls_on_dev = true
