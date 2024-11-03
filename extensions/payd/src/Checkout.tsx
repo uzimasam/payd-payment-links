@@ -22,11 +22,12 @@ import { useState } from "react";
 
 // Constants
 const PAYMENT_API_URL = 'https://global.paydexp.com/api/v1/payment/init';
-const CALLBACK_URL = 'https://paydexp.com/callback';
+const CALLBACK_URL = 'https://uzimasam.myshopify.com/callback';
+const RETURN_URL = 'https://uzimasam.myshopify.com/';
 const API_CREDENTIALS = {
-  username: '',
-  password: '',
-  wallet: '',
+  username: 'bzz8v6SfbyhAGaK5YUuU',
+  password: 'UuERDoplni92QFUONPrfFQzNcMVf3sSeaAiIaiah',
+  wallet: 'uzima',
 };
 
 // Extension component
@@ -70,7 +71,7 @@ function Extension() {
         setError(null);
       } else {
         console.error("Payment API Error:", responseData);
-        setError(responseData.error || 'Failed to generate the tracking link. Please try again.');
+        setError(responseData.error || 'Failed to generate the payment link. Please try again.');
       }
     } catch (error) {
       console.error('Network Error:', error);
@@ -90,6 +91,7 @@ function Extension() {
       name: `${firstName} ${lastName}`,
       phone: phoneNumber,
       callback_url: CALLBACK_URL,
+      redirect_url: RETURN_URL,
     };
     createPaymentSession(payload);
   };
