@@ -3,8 +3,12 @@
 client_id = "b3f57a277c38419fdb359413ff1717be"
 name = "payd-payment-links"
 handle = "payd-payment-links"
-application_url = "https://thou-rm-runs-cities.trycloudflare.com"
+application_url = "https://ya-anger-calculated-shopping.trycloudflare.com"
 embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "uzimasam.myshopify.com"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
@@ -12,9 +16,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://thou-rm-runs-cities.trycloudflare.com/auth/callback",
-  "https://thou-rm-runs-cities.trycloudflare.com/auth/shopify/callback",
-  "https://thou-rm-runs-cities.trycloudflare.com/api/auth/callback"
+  "https://ya-anger-calculated-shopping.trycloudflare.com/auth/callback",
+  "https://ya-anger-calculated-shopping.trycloudflare.com/auth/shopify/callback",
+  "https://ya-anger-calculated-shopping.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -26,7 +30,3 @@ api_version = "2024-10"
 
 [pos]
 embedded = false
-
-[build]
-dev_store_url = "uzimasam.myshopify.com"
-automatically_update_urls_on_dev = true
